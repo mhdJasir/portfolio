@@ -14,16 +14,10 @@ class TextAnimation extends StatefulWidget {
 
 class _TextAnimationState extends State<TextAnimation>
     with TickerProviderStateMixin {
-  late AnimationController controller;
   late AnimationController textController;
 
   @override
   void initState() {
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1500),
-    )..repeat();
-
     textController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -82,7 +76,6 @@ class _TextAnimationState extends State<TextAnimation>
             child: widget,
           ),
         );
-        // return Opacity(opacity: anim.value,child: widget,);
       },
       child: Text(
         value,

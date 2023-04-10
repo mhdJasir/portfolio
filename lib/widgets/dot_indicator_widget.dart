@@ -24,9 +24,8 @@ class DotIndicator extends StatelessWidget {
         separatorBuilder: (c, i) => sbw(5),
         itemBuilder: (c, i) {
           bool primeIndex = currentIndex == i;
-          int radius = primeIndex ? 12 : (i>currentIndex?11-i:5+i);
-          Color color =
-              primeIndex ? AppColors().neonColor : Colors.grey.shade300;
+          int radius = primeIndex ? 12 : (i > currentIndex ? 11 - i : 5 + i);
+          Color color = primeIndex ? AppColors.neonColor : Colors.grey.shade300;
           return AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             height: radius.toDouble(),

@@ -23,8 +23,4 @@ class LandingCubit extends Cubit<LandingState> {
   void onPageChange(int i) {
     emit(LandingState(currentPage: i));
   }
-
-  void onHover(int? val) {
-    emit(LandingState(hoverIndex: val));
-  }
 }
