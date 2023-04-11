@@ -12,7 +12,6 @@ class DelayedWidget extends StatefulWidget {
   final Duration delayDuration;
   final Duration duration;
   final DelayFrom from;
-
   const DelayedWidget({
     Key? key,
     required this.child,
