@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:portfolio/extensions/context_extensions.dart';
 
 class TextAnimation extends StatefulWidget {
   const TextAnimation({super.key, required this.word,required this.style});
@@ -41,7 +41,7 @@ class _TextAnimationState extends State<TextAnimation>
     double begin = startTime * (i / widget.word.length);
     double end = singleChildAnimationDuration + begin;
     Animation<Offset> animation = Tween<Offset>(
-      begin: Offset(kIsWeb? 100.w:400, 0),
+      begin: Offset(kIsWeb ? context.width : 400, 0),
       end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(

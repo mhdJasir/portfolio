@@ -31,6 +31,7 @@ class _WebHomeState extends State<WebHome> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () {
+          initState();
           setState(() {});
           return Future(() => false);
         },
@@ -100,7 +101,8 @@ class _WebHomeState extends State<WebHome> {
                             style: theme.bodySmall,
                           ),
                         );
-                      }),
+                      },
+                      ),
                       sbh(50),
                       _titleWidget(bloc.aboutMeKey, 1, 'About Me'),
                       sbh(50),

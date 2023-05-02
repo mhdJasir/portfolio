@@ -29,81 +29,84 @@ class _MobileHomePageState extends State<MobileHomePage> {
     bloc = BlocProvider.of<LandingCubit>(context);
     return SafeArea(
       child: Scaffold(
-        body: RefreshIndicator(
-          onRefresh: () {
-            setState(() {});
-            return Future(() => false);
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              sbh(20),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
-                      Icons.logo_dev,
-                      color: AppColors.neonColor,
-                    ),
-                    FocusedMenuHolder(
-                      onPressed: () {},
-                      animateMenuItems: true,
-                      openWithTap: true,
-                      menuItems: [
-                        FocusedMenuItem(
-                          title: Text(
-                            "About",
-                            style: theme.displaySmall?.copyWith(fontSize: 13),
-                          ),
-                          onPressed: () {
-                            bloc.scrollToWidget(
-                                bloc.aboutMeKey.currentContext ?? context);
-                          },
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            sbh(20),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(
+                    Icons.logo_dev,
+                    color: AppColors.neonColor,
+                  ),
+                  FocusedMenuHolder(
+                    onPressed: () {},
+                    animateMenuItems: true,
+                    openWithTap: true,
+                    menuItems: [
+                      FocusedMenuItem(
+                        title: Text(
+                          "About",
+                          style: theme.displaySmall?.copyWith(fontSize: 13),
                         ),
-                        FocusedMenuItem(
-                          title: Text(
-                            "Experience",
-                            style: theme.displaySmall?.copyWith(fontSize: 13),
-                          ),
-                          onPressed: () {
-                            bloc.scrollToWidget(
-                                bloc.experienceKey.currentContext ?? context);
-                          },
-                        ),
-                        FocusedMenuItem(
-                          title: Text(
-                            "Work",
-                            style: theme.displaySmall?.copyWith(fontSize: 13),
-                          ),
-                          onPressed: () {
-                            bloc.scrollToWidget(
-                                bloc.workKey.currentContext ?? context);
-                          },
-                        ),
-                        FocusedMenuItem(
-                          title: Text(
-                            "Contact",
-                            style: theme.displaySmall?.copyWith(fontSize: 13),
-                          ),
-                          onPressed: () {
-                            bloc.scrollToWidget(
-                                bloc.contactKey.currentContext ?? context);
-                          },
-                        ),
-                      ],
-                      child: const Icon(
-                        Icons.menu,
-                        color: Colors.white,
+                        onPressed: () {
+                          bloc.scrollToWidget(
+                              bloc.aboutMeKey.currentContext ?? context);
+                        },
                       ),
+                      FocusedMenuItem(
+                        title: Text(
+                          "Experience",
+                          style: theme.displaySmall?.copyWith(fontSize: 13),
+                        ),
+                        onPressed: () {
+                          bloc.scrollToWidget(
+                              bloc.experienceKey.currentContext ?? context);
+                        },
+                      ),
+                      FocusedMenuItem(
+                        title: Text(
+                          "Work",
+                          style: theme.displaySmall?.copyWith(fontSize: 13),
+                        ),
+                        onPressed: () {
+                          bloc.scrollToWidget(
+                              bloc.workKey.currentContext ?? context);
+                        },
+                      ),
+                      FocusedMenuItem(
+                        title: Text(
+                          "Contact",
+                          style: theme.displaySmall?.copyWith(fontSize: 13),
+                        ),
+                        onPressed: () {
+                          bloc.scrollToWidget(
+                              bloc.contactKey.currentContext ?? context);
+                        },
+                      ),
+                    ],
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 25),
+            ),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 25),
+                child: RefreshIndicator(
+                  onRefresh: () async{
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (c){
+                      return const MobileHomePage();
+                    }));
+                    return Future(() => false);
+                  },
                   child: SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Column(
@@ -216,8 +219,8 @@ class _MobileHomePageState extends State<MobileHomePage> {
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
