@@ -114,7 +114,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                       children: [
                         sbh(80),
                         Text(
-                          "Hii, My name is ",
+                          "Hiiiii, My name is ",
                           style: theme.titleMedium
                               ?.copyWith(color: AppColors.neonColor),
                         ),
