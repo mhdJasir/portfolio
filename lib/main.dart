@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => LandingCubit()),
       ],
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Portfolio',
