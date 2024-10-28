@@ -26,5 +26,5 @@ jobs:
 
       - name: Deploy to Nginx server
         run: |
-          sudo rsync -avz --delete build/web/ /var/www/html/flutter/ 
-          sudo systemctl restart nginx  # Restart Nginx to serve the new build
+          sudo rsync -avz --delete build/web/ /var/www/html/flutter/  
+          sudo systemctl restart nginx 
