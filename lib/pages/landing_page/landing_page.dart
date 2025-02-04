@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:portfolio/pages/landing_page/mobile_home_page.dart';
 import 'package:portfolio/pages/landing_page/web_home_page.dart';
 
@@ -11,9 +10,9 @@ class LandingPage extends StatelessWidget {
     return LayoutBuilder(
       builder: (c, constraints) {
         if (constraints.maxWidth > 600) {
-          return WebHome();
+          return const WebHome();
         }
-        return MobileHomePage();
+        return const MobileHomePage();
       },
     );
   }

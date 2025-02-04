@@ -69,7 +69,7 @@ class _WebHomeState extends State<WebHome> {
                     children: [
                       sbh(100),
                       Text(
-                        "Hii, My name is ",
+                        "Hiii, My name is ",
                         style: theme.titleMedium
                             ?.copyWith(color: AppColors.neonColor),
                       ),
