@@ -1,29 +1,25 @@
-name: CI/CD for Flutter Web App
+name: Deploy Build Files to EC2
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  build:
-    runs-on: self-hosted
+  deploy:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.22.0'
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build the Flutter web app
-        run: flutter build web
-
-      - name: Deploy to Nginx server
+      - name: Set up SSH
         run: |
-          sudo rsync -avz --delete build/web/ /var/www/html/flutter/  
-          sudo systemctl restart nginx 
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 13.202.122.112 >> ~/.ssh/known_hosts
+
+      - name: Deploy only build files
+        run: |
+          rsync -avz --delete build/web/ ec2-user@13.202.122.112:/var/www/portfolio/
