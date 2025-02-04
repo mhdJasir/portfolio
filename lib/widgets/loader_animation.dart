@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/extensions/context_extensions.dart';
+import 'package:portfolio/helpers/extensions/context_extensions.dart';
 
 class TextAnimation extends StatefulWidget {
   const TextAnimation({super.key, required this.word,required this.style});

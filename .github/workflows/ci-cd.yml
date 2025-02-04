@@ -1,29 +1,18 @@
-name: CI/CD for Flutter Web App
+name: Deploy Flutter Web App
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.22.0'
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build the Flutter web app
-        run: flutter build web
-
-      - name: Deploy to Nginx server
+      - name: Copy code to web directory and restart Nginx
         run: |
-          sudo rsync -avz --delete build/web/ /var/www/html/flutter/  
-          sudo systemctl restart nginx 
+          rsync -a --delete $GITHUB_WORKSPACE/ /var/www/html/
+          sudo systemctl restart nginx

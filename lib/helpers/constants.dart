@@ -19,6 +19,7 @@ unFocus() {
 
 class Constants {
   static const String name = "Muhammed Jasir.";
+  static const String objective = "With three years of experience in Flutter, I’ve built high-performance, cross-platform apps driven by a passion for seamless user experiences. Recently, I expanded into backend development with Node.js, adding server-side skills to my toolkit for more versatile problem-solving.";
   static const String tagLine = "I build Android and iOS apps";
   static const String shortDescription =
       "I'm a developer started my tech courier as a flutter developer. im passionate about building scalable "
