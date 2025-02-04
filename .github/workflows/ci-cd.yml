@@ -1,4 +1,4 @@
-name: Deploy Flutter Web App
+name: Deploy Build Files to EC2
 
 on:
   push:
@@ -7,12 +7,19 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    runs-on: ubuntu-latest
 
-      - name: Copy code to web directory and restart Nginx
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
         run: |
-          rsync -a --delete $GITHUB_WORKSPACE/ /var/www/html/
-          sudo systemctl restart nginx
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 13.202.122.112 >> ~/.ssh/known_hosts
+
+      - name: Deploy only build files
+        run: |
+          rsync -avz --delete build/web/ ec2-user@13.202.122.112:/var/www/portfolio/
