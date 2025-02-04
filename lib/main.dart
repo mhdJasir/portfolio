@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Portfolio',
         theme: ThemeHelper().theme,
-        home: const HomePage(),
+        home: const LandingPage(),
       ),
     );
   }
